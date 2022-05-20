@@ -14,10 +14,11 @@ public class Main {
         int columns = scanner.nextInt();
         System.out.println("> " + columns);
 
+        int ticketPrice = 0;
         int numberOfSeats = 0;
         int totalSum = 0;
 
-        int[][] seats = new int[rows][columns];
+        String[][] seats = new String[rows][columns];
         System.out.println("Cinema:");
         System.out.print(" ");
         for (int i = 0; i < columns; i++) {
@@ -28,15 +29,17 @@ public class Main {
         for (int i = 0; i < seats.length; i++) {
             System.out.print(i + 1 + " ");
             for (int j = 0; j < seats[0].length; j++) {
-                System.out.print("S ");
+                seats[i][j] = "S";
+                System.out.print(seats[i][j] + " ");
                 numberOfSeats++;
             }
             System.out.println();
         }
-        System.out.println(numberOfSeats);
+
 
         if (numberOfSeats <= 60) {
-            totalSum = numberOfSeats * 10;
+            ticketPrice = 10;
+            totalSum = numberOfSeats * ticketPrice;
         } else {
             int fowardSeats = 0;
             int backSeats = 0;
@@ -45,14 +48,16 @@ public class Main {
             int midleRows = rows / 2;
             for (int i = 0; i < midleRows; i++) {
                 for (int j = 0; j < columns; j++) {
+                    ticketPrice = 10;
                     fowardSeats++;
-                    fowardSeatsPrice = fowardSeats * 10;
+                    fowardSeatsPrice = fowardSeats * ticketPrice;
                 }
             }
             for (int i = midleRows; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
+                    ticketPrice = 8;
                     backSeats++;
-                    backSeatsPrice = backSeats * 8;
+                    backSeatsPrice = backSeats * ticketPrice;
                 }
             }
             totalSum = fowardSeatsPrice + backSeatsPrice;
